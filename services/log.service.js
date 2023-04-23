@@ -3,7 +3,7 @@ import dedent from 'dedent-js';
 
 
 const printError = (error) => {
-    console.log(chalk.bgRed(' Error ')` ${error}`);
+    console.log(`${chalk.bgRed(' Error ')} ${error}`);
 };
 
 const printSuccess = (msg) => {
@@ -20,4 +20,14 @@ const printHelp = () => {
     );
 };
 
-export { printError, printSuccess, printHelp };
+const printWeather = (res, icon) => {
+    console.log(
+        dedent`${chalk.bgMagenta(' Weather ')} Weather in ${res.name}
+        ${icon}  ${res.weather[0].description}
+        Temperature: ${Math.round(res.main.temp)} (Feels like ${res.main.feels_like})
+        Pressure: ${res.main.pressure} 
+        Wind: ${res.wind.speed}`
+    );
+};
+
+export { printError, printSuccess, printHelp, printWeather };
